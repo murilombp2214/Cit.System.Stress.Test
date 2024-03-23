@@ -19,9 +19,12 @@
 
 
  # Run Cit.System.Rifa
-   -  k6 run --env ENV='PRD' --env CUSTOMER='Buzeira' --env CAMPANHA='jujuba-malvada'  Cit.System.Rifa\abertura-de-pagina.js
       - CUSTOMER = Nome do cliente 
       - CAMPANHA = Campanha que será testada
+      ## Abertura de Pagina
+         -  k6 run --env ENV='PRD' --env CUSTOMER='Buzeira' --env CAMPANHA='jujuba-malvada'  Cit.System.Rifa\abertura-de-pagina.js
+      ## Get Camapanha
+         -  k6 run --env ENV='Local' --env CUSTOMER='Buzeira' --env CAMPANHA='jujuba-malvada' --duration 10s --vus 10 --iterations 10  Cit.System.Rifa\get-campanha.js
 
 # Markdown preview
 VS Code supports Markdown files out of the box. You just start writing Markdown text, save the file with the .md extension and then you can toggle the visualization of the editor between the code and the preview of the Markdown file; obviously, you can also open an existing Markdown file and start working with it. To switch between views, press Ctrl+Shift+V in the editor. You can view the preview side-by-side (Ctrl+K V) with the file you are editing and see changes reflected in real-time as you edit.

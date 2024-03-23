@@ -1,13 +1,13 @@
 import { getBaseUrl as BuzeiraGetBaseUrl} from './Buzeira/Config/Enviroment.js'
 import { getBaseUrl as RobertRealizaGetBaseUrl} from './RobertRealiza/Config/Enviroment.js'
 
-export function getBaseUrl(){
+export function getCustomerBaseUrl(){
   //Buzeira
   if(getCustomer() == 'Buzeira')
-    return BuzeiraGetBaseUrl;
+    return BuzeiraGetBaseUrl();
 
   //Robert
-  return RobertRealizaGetBaseUrl;
+  return RobertRealizaGetBaseUrl();
 }
 
 export function getCustomer(){

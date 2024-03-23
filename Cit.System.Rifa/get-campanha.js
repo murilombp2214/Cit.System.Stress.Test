@@ -1,20 +1,19 @@
 import http from 'k6/http';
-import { getBaseUrl,getCampanha } from './rifaConfig.js';
+import { getCustomerBaseUrl,getCampanha } from './rifa-config.js';
 
 export const options = {
 
-  //Entrada de uma vez dos usuarios
+  //Interações do usuario com a campanha
   scenarios: {
     shared_iter_scenario: {
-      executor: "shared-iterations",
-      vus: 1000, //quantidade de usuarios
-      iterations: 2, //quantidade de vezes que um usuario unico vai entrar na tela
-      startTime: "1s",
+      executor: "per-vu-iterations",
+      vus: 10, //usuario no local da campanha
+      iterations: 10 // usuario iteragindo com a campanha
     }
   }
 };
 
 
 export default function() {
-  http.get(getBaseUrl() + '/campanha/' + getCampanha());
+  http.get(getCustomerBaseUrl() + 'campanha/' + getCampanha());
 }

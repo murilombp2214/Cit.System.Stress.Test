@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { getBaseUrl } from './rifaConfig.js';
+import { getCustomerBaseUrl } from './rifa-config.js';
 
 export const options = {
 
@@ -16,5 +16,5 @@ export const options = {
 
 
 export default function() {
-  http.get(getBaseUrl());
+  http.get(getCustomerBaseUrl());
 }
