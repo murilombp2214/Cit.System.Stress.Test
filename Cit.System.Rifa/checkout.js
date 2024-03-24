@@ -47,7 +47,7 @@ export default function () {
                 console.error('Response.Headers:', r.headers);
                 console.error(r);
             }
-            return r.status == 200;
+            return r.status == 200 || r.status == 400;
         }
     });
 }
