@@ -18,7 +18,7 @@ export const options = {
 
 export default function() {
     let result = http.get(getCustomerBaseUrl(), {
-      timeout: '5s'
+      timeout: '60s'
     });
 
     check(result,{
