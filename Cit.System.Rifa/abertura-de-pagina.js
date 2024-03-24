@@ -17,8 +17,6 @@ export const options = {
 
 
 export default function() {
-
-  for (let i = 0; i < options.iterations; i++) {
     let result = http.get(getCustomerBaseUrl());
 
     check(result,{
@@ -28,6 +26,12 @@ export default function() {
           return r.status == 200;
       }
     });
-  }
-
+  
 }
+
+
+/*
+  cpu: 2cpu
+  mem: 4gb
+  min 
+*/
