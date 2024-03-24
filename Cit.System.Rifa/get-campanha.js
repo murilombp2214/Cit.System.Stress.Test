@@ -16,7 +16,9 @@ export const options = {
 
 
 export default function() {
-  let result = http.get(getCustomerBaseUrl() + 'campanha/' + getCampanha());
+  let result = http.get(getCustomerBaseUrl() + 'campanha/' + getCampanha(),{
+    timeout: '6s'
+  });
   
   check(result,{
     'status is ok': (r) => {

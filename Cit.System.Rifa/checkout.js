@@ -31,7 +31,9 @@ export default function () {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'X-Csrf-Token' : getToken(),
         'Cookie': getCookie()
-    }};
+    },
+    timeout: '7s'
+    };
 
     let payload = '';
 
