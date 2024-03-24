@@ -21,6 +21,8 @@
  # Run Cit.System.Rifa
       - CUSTOMER = Nome do cliente 
       - CAMPANHA = Campanha que será testada
+      - TOKEN = Token de acesso
+      - COOKIE = Cookie da sessão
       ## Abertura de Pagina
          -  k6 run --env ENV='PRD' --env CUSTOMER='Buzeira' --env CAMPANHA='jujuba-malvada'  Cit.System.Rifa\abertura-de-pagina.js
       ## Get Camapanha
