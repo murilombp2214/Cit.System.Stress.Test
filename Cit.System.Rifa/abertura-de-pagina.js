@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { getCustomerBaseUrl } from './rifa-config.js';
+import { check } from 'k6';
 
 export const options = {
 
@@ -16,5 +17,13 @@ export const options = {
 
 
 export default function() {
-  http.get(getCustomerBaseUrl());
+  let result = http.get(getCustomerBaseUrl());
+
+  check(result,{
+    'status is ok': (r) => {
+        if(r.status != 200)
+            console.error(r);
+        return r.status == 200;
+    }
+});
 }
