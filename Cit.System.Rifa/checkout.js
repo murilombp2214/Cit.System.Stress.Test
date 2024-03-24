@@ -1,17 +1,19 @@
 import http from 'k6/http';
-import { getCustomerBaseUrl,getCampanha, getToken, getCookie } from './rifa-config.js';
+import { getCustomerBaseUrl,getCampanha, getToken, getCookie, getCampanhaId } from './rifa-config.js';
 import { check } from 'k6';
 
 export default function () {
   let data = { 
-    campanha_id: 'f1f98ef3-de15-4d7d-9207-0d939f94bb21',
+    campanha_id: getCampanhaId(),
     telefone: generateRandomPhoneNumber(),
-    name: 'CIT',
+    nome: 'CIT',
     sobrenome:'Sobrenome',
     cpf : generateRandomCPF().toString(),
     email: 'm' + generateRandomCPF().toString()  + '-' +   Math.floor(Math.random() * 2) +'@gmail.com',
-    qtd_numeros: 10
+    qtd_numeros: 1
  };
+
+ console.log(data);
 
   let params = {
     headers: { 
@@ -26,8 +28,14 @@ export default function () {
 
     check(result,{
         'status is ok': (r) => {
-            if(r.status != 200)
+            if(r.status != 200){
+                console.log('Request.Headers:', result.headers);
+                console.error('Response.StatusCode: ', r.status);
+                console.error('Response.Body: ', r.body);
+                console.error('Response.Url:', r.url );
+                console.error('Response.Headers:', r.headers);
                 console.error(r);
+            }
             return r.status == 200;
         }
     });
@@ -35,7 +43,7 @@ export default function () {
 
 function toQueryString(objeto) {
     return Object.entries(objeto)
-        .map(([chave, valor]) => encodeURIComponent(chave) + '=' + encodeURIComponent(valor))
+        .map(([chave, valor]) => chave + '=' + valor)
         .join('&');
 }
 

@@ -20,7 +20,8 @@
 
  # Run Cit.System.Rifa
       - CUSTOMER = Nome do cliente 
-      - CAMPANHA = Campanha que será testada
+      - CAMPANHA = Slug Campanha que será testada
+      - CAMPANHA_ID = Id da campanha que será testada
       - TOKEN = Token de acesso
       - COOKIE = Cookie da sessão
       ## Abertura de Pagina
