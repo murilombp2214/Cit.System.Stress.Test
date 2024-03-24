@@ -7,9 +7,9 @@ export const options = {
   //Entrada de uma vez dos usuarios
   scenarios: {
     shared_iter_scenario: {
-      executor: "shared-iterations",
+      executor: "per-vu-iterations",
       vus: 1000, //quantidade de usuarios
-      iterations: 2, //quantidade de vezes que um usuario unico vai entrar na tela
+      iterations: 2, //quantidade de vezes que um usuario unico vai entrar na tela (para esse caso o k6 ignora)
       startTime: "1s",
     }
   }
@@ -17,13 +17,17 @@ export const options = {
 
 
 export default function() {
-  let result = http.get(getCustomerBaseUrl());
 
-  check(result,{
-    'status is ok': (r) => {
-        if(r.status != 200)
-            console.error(r);
-        return r.status == 200;
-    }
-});
+  for (let i = 0; i < options.iterations; i++) {
+    let result = http.get(getCustomerBaseUrl());
+
+    check(result,{
+      'status is ok': (r) => {
+          if(r.status != 200)
+              console.error(r);
+          return r.status == 200;
+      }
+    });
+  }
+
 }

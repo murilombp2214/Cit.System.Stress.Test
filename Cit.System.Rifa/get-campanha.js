@@ -7,7 +7,7 @@ export const options = {
   //Interações do usuario com a campanha
   scenarios: {
     shared_iter_scenario: {
-      executor: "per-vu-iterations",
+      executor: "shared-iterations",
       vus: 10, //usuario no local da campanha
       iterations: 1 // usuario iteragindo com a campanha
     }
