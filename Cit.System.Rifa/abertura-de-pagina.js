@@ -1,18 +1,13 @@
 import http from 'k6/http';
 import { getCustomerBaseUrl } from './rifa-config.js';
-import { check } from 'k6';
+import { check,sleep  } from 'k6';
 
 export const options = {
-
-  //Entrada de uma vez dos usuarios
-  scenarios: {
-    shared_iter_scenario: {
-      executor: "per-vu-iterations",
-      vus: 1000, //quantidade de usuarios
-      iterations: 2, //quantidade de vezes que um usuario unico vai entrar na tela (para esse caso o k6 ignora)
-      startTime: "1s",
-    }
-  }
+  stages: [
+    { duration: '1m', target: 100000 }, 
+    { duration: '4m', target: 200000 }, 
+    { duration: '9m', target: 300000 }, 
+  ],
 };
 
 
@@ -30,10 +25,3 @@ export default function() {
     });
   
 }
-
-
-/*
-  cpu: 2cpu
-  mem: 4gb
-  min 
-*/

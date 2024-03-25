@@ -6,7 +6,7 @@ export function getBaseUrl(){
     
     //load balance
     if(IsHML())
-        return 'http://monster-dev-103800893.us-east-1.elb.amazonaws.com';
+        return 'http://monster-dev-103800893.us-east-1.elb.amazonaws.com/';
 
     return 'https://roberthrealiza.com/'
 }
